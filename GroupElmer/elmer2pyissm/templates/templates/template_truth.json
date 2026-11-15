@@ -1,0 +1,121 @@
+{
+  "_about": "Known answers planted in the synthetic templates. A correct Elmer->pyISSM converter should reproduce these. Indices here are 1-based (ISSM convention) unless stated.",
+  "seed": 2026,
+  "nx": 41,
+  "ny": 31,
+  "mesh": {
+    "numberofvertices": 1271,
+    "numberofelements": 2400,
+    "numberofedges": 3670,
+    "n_faces_stored_clockwise_in_file": 740,
+    "n_boundary_edges": 140,
+    "n_boundary_vertices": 140,
+    "total_area_m2": 120000000000.0,
+    "connectivity_start_index_in_file": 0,
+    "boundary_neighbour_marker_in_face_links": -1,
+    "boundary_marker_in_edge_face_links": -999,
+    "projection": "EPSG:3031"
+  },
+  "time": {
+    "calendar": "360_day",
+    "states_decimal_years": [
+      2016.0,
+      2017.0,
+      2018.0,
+      2019.0,
+      2020.0
+    ],
+    "forcing_scalars_decimal_years_centre": [
+      2015.5,
+      2016.5,
+      2017.5,
+      2018.5,
+      2019.5
+    ]
+  },
+  "conventions": {
+    "groundedmask": "1 = grounded, 0 = grounding-line node (grounded with a floating neighbour), -1 = floating",
+    "issm_ocean_levelset": "> 0 grounded, < 0 floating",
+    "issm_ice_levelset": "< 0 ice present, > 0 no ice",
+    "ice_free_definition": "h <= 1.0 m (Elmer minimum thickness)",
+    "bmb_sign": "positive = melt (m ice a-1)",
+    "libmassbf_sign": "negative = melt (m ice a-1)",
+    "friction_law_planted": "tau_b = tau_RC * (|u| / (|u| + u0))**(1/m); tau_RC = 0.01*N; alphaRC = 1/m = 1/3; betaRC = u0 = 300 m a-1; ceff = tau_b/|u|. PLACEHOLDER - replace with the real Elmer/Ice definitions.",
+    "melt_law_planted": "bmb = gamma0*(rho_w*cp/(rho_i*L))**2 * TF*|TF|, gamma0 = 14477 m a-1",
+    "units": "Elmer: m, a, MPa. ISSM: SI (Pa, s) except velocities/SMB in m/yr - check yts",
+    "rho_ice": 917.0,
+    "rho_water": 1028.0
+  },
+  "per_timestep": [
+    {
+      "decimal_year": 2016.0,
+      "volume_m3_sum_h_elem_x_cell_area": 202193354738798.94,
+      "volume_above_floatation_m3": 175252490544359.78,
+      "smb_int_m3_per_a": 33621125587.699787,
+      "bmb_int_m3_per_a_melt_positive": 14619622599.506018,
+      "n_vertices_grounded_incl_GL": 1017,
+      "n_vertices_floating": 254,
+      "n_vertices_GL": 35,
+      "n_vertices_with_ice": 1067,
+      "max_speed_m_per_a": 1560.2418793141587,
+      "max_strbasemag_MPa": 0.14001762712642707,
+      "flotation_check_max_abs_err_m": 4.547473508864641e-13
+    },
+    {
+      "decimal_year": 2017.0,
+      "volume_m3_sum_h_elem_x_cell_area": 199424040861954.88,
+      "volume_above_floatation_m3": 173442242384748.0,
+      "smb_int_m3_per_a": 32669788620.03839,
+      "bmb_int_m3_per_a_melt_positive": 18626973831.67161,
+      "n_vertices_grounded_incl_GL": 999,
+      "n_vertices_floating": 272,
+      "n_vertices_GL": 34,
+      "n_vertices_with_ice": 1054,
+      "max_speed_m_per_a": 1503.9385994956724,
+      "max_strbasemag_MPa": 0.14051193433188425,
+      "flotation_check_max_abs_err_m": 4.547473508864641e-13
+    },
+    {
+      "decimal_year": 2018.0,
+      "volume_m3_sum_h_elem_x_cell_area": 196884443855698.66,
+      "volume_above_floatation_m3": 171672459908321.8,
+      "smb_int_m3_per_a": 32711471036.44064,
+      "bmb_int_m3_per_a_melt_positive": 18508083394.146698,
+      "n_vertices_grounded_incl_GL": 992,
+      "n_vertices_floating": 279,
+      "n_vertices_GL": 31,
+      "n_vertices_with_ice": 1052,
+      "max_speed_m_per_a": 1561.7823917839673,
+      "max_strbasemag_MPa": 0.14092688287047367,
+      "flotation_check_max_abs_err_m": 4.547473508864641e-13
+    },
+    {
+      "decimal_year": 2019.0,
+      "volume_m3_sum_h_elem_x_cell_area": 193623463915156.03,
+      "volume_above_floatation_m3": 169893969138344.47,
+      "smb_int_m3_per_a": 31286689677.760017,
+      "bmb_int_m3_per_a_melt_positive": 16361506702.368263,
+      "n_vertices_grounded_incl_GL": 983,
+      "n_vertices_floating": 288,
+      "n_vertices_GL": 33,
+      "n_vertices_with_ice": 1026,
+      "max_speed_m_per_a": 1570.7432127479003,
+      "max_strbasemag_MPa": 0.14126534672488364,
+      "flotation_check_max_abs_err_m": 4.547473508864641e-13
+    },
+    {
+      "decimal_year": 2020.0,
+      "volume_m3_sum_h_elem_x_cell_area": 191299168546807.28,
+      "volume_above_floatation_m3": 168169291550479.47,
+      "smb_int_m3_per_a": 31131741618.706146,
+      "bmb_int_m3_per_a_melt_positive": 21409793960.61002,
+      "n_vertices_grounded_incl_GL": 967,
+      "n_vertices_floating": 304,
+      "n_vertices_GL": 33,
+      "n_vertices_with_ice": 1023,
+      "max_speed_m_per_a": 1551.300307887303,
+      "max_strbasemag_MPa": 0.14152975110266627,
+      "flotation_check_max_abs_err_m": 4.547473508864641e-13
+    }
+  ]
+}

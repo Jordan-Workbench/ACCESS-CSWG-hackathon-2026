@@ -1,0 +1,468 @@
+la
+total 7368440
+drwx------@  5 felicity  staff   160B 15 Nov 10:42 .
+drwx------+ 71 felicity  staff   2.2K 15 Nov 10:42 ..
+-rw-rw-r--@  1 felicity  staff   1.4G 13 Nov 22:45 ssp370_c003_m005_v2_forcing.nc
+-rw-rw-r--@  1 felicity  staff   160M 13 Nov 22:50 ssp370_c003_m005_v2_scalars.nc
+-rw-rw-r--@  1 felicity  staff   1.9G 13 Nov 22:50 ssp370_c003_m005_v2_states.nc
+Felicitys-MacBook-Pro:OneDrive_1_11-14-2026 felicity$ conda activate issm_env
+(issm_env) Felicitys-MacBook-Pro:OneDrive_1_11-14-2026 felicity$ ncdump -h ssp370_c003_m005_v2_states.nc
+netcdf ssp370_c003_m005_v2_states {
+dimensions:
+	axis_nbounds = 2 ;
+	Two = 2 ;
+	nmesh2D_node = 929491 ;
+	nmesh2D_edge = 2754695 ;
+	nmesh2D_face = 1825205 ;
+	nmesh2D_vertex = 3 ;
+	time = UNLIMITED ; // (5 currently)
+variables:
+	int mesh2D ;
+		mesh2D:cf_role = "mesh_topology" ;
+		mesh2D:long_name = "Topology data of 2D unstructured mesh" ;
+		mesh2D:topology_dimension = 2 ;
+		mesh2D:node_coordinates = "mesh2D_node_x mesh2D_node_y" ;
+		mesh2D:edge_coordinates = "mesh2D_edge_x mesh2D_edge_y" ;
+		mesh2D:edge_node_connectivity = "mesh2D_edge_nodes" ;
+		mesh2D:face_edge_connectivity = "mesh2D_face_edges" ;
+		mesh2D:edge_face_connectivity = "mesh2D_edge_face_links" ;
+		mesh2D:face_face_connectivity = "mesh2D_face_links" ;
+		mesh2D:face_coordinates = "mesh2D_face_x mesh2D_face_y" ;
+		mesh2D:face_node_connectivity = "mesh2D_face_nodes" ;
+	float mesh2D_node_x(nmesh2D_node) ;
+		mesh2D_node_x:standard_name = "longitude" ;
+		mesh2D_node_x:long_name = "Longitude of mesh nodes." ;
+		mesh2D_node_x:units = "degrees_east" ;
+	float mesh2D_node_y(nmesh2D_node) ;
+		mesh2D_node_y:standard_name = "latitude" ;
+		mesh2D_node_y:long_name = "Latitude of mesh nodes." ;
+		mesh2D_node_y:units = "degrees_north" ;
+	float mesh2D_edge_x(nmesh2D_edge) ;
+		mesh2D_edge_x:standard_name = "longitude" ;
+		mesh2D_edge_x:long_name = "Characteristic longitude of mesh edges." ;
+		mesh2D_edge_x:units = "degrees_east" ;
+	float mesh2D_edge_y(nmesh2D_edge) ;
+		mesh2D_edge_y:standard_name = "latitude" ;
+		mesh2D_edge_y:long_name = "Characteristic latitude of mesh edges." ;
+		mesh2D_edge_y:units = "degrees_north" ;
+	int mesh2D_edge_nodes(nmesh2D_edge, Two) ;
+		mesh2D_edge_nodes:cf_role = "edge_node_connectivity" ;
+		mesh2D_edge_nodes:long_name = "Maps every edge/link to two nodes that it connects." ;
+		mesh2D_edge_nodes:start_index = 0 ;
+	float mesh2D_face_x(nmesh2D_face) ;
+		mesh2D_face_x:standard_name = "longitude" ;
+		mesh2D_face_x:long_name = "Characteristic longitude of mesh faces." ;
+		mesh2D_face_x:units = "degrees_east" ;
+	float mesh2D_face_y(nmesh2D_face) ;
+		mesh2D_face_y:standard_name = "latitude" ;
+		mesh2D_face_y:long_name = "Characteristic latitude of mesh faces." ;
+		mesh2D_face_y:units = "degrees_north" ;
+	int mesh2D_face_nodes(nmesh2D_face, nmesh2D_vertex) ;
+		mesh2D_face_nodes:cf_role = "face_node_connectivity" ;
+		mesh2D_face_nodes:long_name = "Maps every face to its corner nodes." ;
+		mesh2D_face_nodes:start_index = 0 ;
+	int mesh2D_face_edges(nmesh2D_face, nmesh2D_vertex) ;
+		mesh2D_face_edges:cf_role = "face_edge_connectivity" ;
+		mesh2D_face_edges:long_name = "Maps every face to its edges." ;
+		mesh2D_face_edges:start_index = 0 ;
+		mesh2D_face_edges:_FillValue = 999999 ;
+	int mesh2D_edge_face_links(nmesh2D_edge, Two) ;
+		mesh2D_edge_face_links:cf_role = "edge_face_connectivity" ;
+		mesh2D_edge_face_links:long_name = "neighbor faces for edges" ;
+		mesh2D_edge_face_links:start_index = 0 ;
+		mesh2D_edge_face_links:_FillValue = -999 ;
+		mesh2D_edge_face_links:comment = "missing neighbor faces are indicated using _FillValue" ;
+	int mesh2D_face_links(nmesh2D_face, nmesh2D_vertex) ;
+		mesh2D_face_links:cf_role = "face_face_connectivity" ;
+		mesh2D_face_links:long_name = "Indicates which other faces neighbor each face" ;
+		mesh2D_face_links:start_index = 0 ;
+		mesh2D_face_links:_FillValue = 999999 ;
+		mesh2D_face_links:flag_values = -1 ;
+		mesh2D_face_links:flag_meanings = "out_of_mesh" ;
+	double time_instant(time) ;
+		time_instant:standard_name = "time" ;
+		time_instant:long_name = "Time axis" ;
+		time_instant:calendar = "360_day" ;
+		time_instant:units = "days since 2005-01-01 00:00:00" ;
+		time_instant:time_origin = "2005-01-01 00:00:00" ;
+		time_instant:bounds = "time_instant_bounds" ;
+	double time_instant_bounds(time, axis_nbounds) ;
+	double time(time) ;
+		time:axis = "T" ;
+		time:standard_name = "time" ;
+		time:long_name = "Time axis" ;
+		time:calendar = "360_day" ;
+		time:units = "days since 2005-01-01 00:00:00" ;
+		time:time_origin = "2005-01-01 00:00:00" ;
+		time:bounds = "time_bounds" ;
+	double time_bounds(time, axis_nbounds) ;
+	float cell_area(nmesh2D_face) ;
+		cell_area:units = "m2" ;
+		cell_area:mesh = "mesh2D" ;
+		cell_area:location = "face" ;
+		cell_area:online_operation = "once" ;
+		cell_area:coordinates = "mesh2D_face_y mesh2D_face_x" ;
+	float x(nmesh2D_node) ;
+		x:standard_name = "projection_x_coordinate" ;
+		x:units = "m" ;
+		x:mesh = "mesh2D" ;
+		x:location = "node" ;
+		x:online_operation = "once" ;
+		x:coordinates = "mesh2D_node_y mesh2D_node_x" ;
+	double h_elem(time, nmesh2D_face) ;
+		h_elem:standard_name = "land_ice_thickness" ;
+		h_elem:units = "m" ;
+		h_elem:mesh = "mesh2D" ;
+		h_elem:location = "face" ;
+		h_elem:online_operation = "instant" ;
+		h_elem:interval_operation = "1 yr" ;
+		h_elem:interval_write = "1 yr" ;
+		h_elem:cell_methods = "time: point" ;
+		h_elem:coordinates = "time_instant mesh2D_face_y mesh2D_face_x" ;
+	float y(nmesh2D_node) ;
+		y:standard_name = "projection_y_coordinate" ;
+		y:units = "m" ;
+		y:mesh = "mesh2D" ;
+		y:location = "node" ;
+		y:online_operation = "once" ;
+		y:coordinates = "mesh2D_node_y mesh2D_node_x" ;
+	double zs_elem(time, nmesh2D_face) ;
+		zs_elem:standard_name = "surface_altitude" ;
+		zs_elem:units = "m" ;
+		zs_elem:mesh = "mesh2D" ;
+		zs_elem:location = "face" ;
+		zs_elem:online_operation = "instant" ;
+		zs_elem:interval_operation = "1 yr" ;
+		zs_elem:interval_write = "1 yr" ;
+		zs_elem:cell_methods = "time: point" ;
+		zs_elem:coordinates = "time_instant mesh2D_face_y mesh2D_face_x" ;
+	double h(time, nmesh2D_node) ;
+		h:standard_name = "land_ice_thickness" ;
+		h:units = "m" ;
+		h:mesh = "mesh2D" ;
+		h:location = "node" ;
+		h:online_operation = "instant" ;
+		h:interval_operation = "1 yr" ;
+		h:interval_write = "1 yr" ;
+		h:cell_methods = "time: point" ;
+		h:coordinates = "time_instant mesh2D_node_y mesh2D_node_x" ;
+	double zb_elem(time, nmesh2D_face) ;
+		zb_elem:standard_name = "base_altitude" ;
+		zb_elem:units = "m" ;
+		zb_elem:mesh = "mesh2D" ;
+		zb_elem:location = "face" ;
+		zb_elem:online_operation = "instant" ;
+		zb_elem:interval_operation = "1 yr" ;
+		zb_elem:interval_write = "1 yr" ;
+		zb_elem:cell_methods = "time: point" ;
+		zb_elem:coordinates = "time_instant mesh2D_face_y mesh2D_face_x" ;
+	double zb(time, nmesh2D_node) ;
+		zb:standard_name = "base_altitude" ;
+		zb:units = "m" ;
+		zb:mesh = "mesh2D" ;
+		zb:location = "node" ;
+		zb:online_operation = "instant" ;
+		zb:interval_operation = "1 yr" ;
+		zb:interval_write = "1 yr" ;
+		zb:cell_methods = "time: point" ;
+		zb:coordinates = "time_instant mesh2D_node_y mesh2D_node_x" ;
+	double zs(time, nmesh2D_node) ;
+		zs:standard_name = "surface_altitude" ;
+		zs:units = "m" ;
+		zs:mesh = "mesh2D" ;
+		zs:location = "node" ;
+		zs:online_operation = "instant" ;
+		zs:interval_operation = "1 yr" ;
+		zs:interval_write = "1 yr" ;
+		zs:cell_methods = "time: point" ;
+		zs:coordinates = "time_instant mesh2D_node_y mesh2D_node_x" ;
+	double bedrock_elem(time, nmesh2D_face) ;
+		bedrock_elem:standard_name = "bedrock_altitude" ;
+		bedrock_elem:units = "m" ;
+		bedrock_elem:mesh = "mesh2D" ;
+		bedrock_elem:location = "face" ;
+		bedrock_elem:online_operation = "instant" ;
+		bedrock_elem:interval_operation = "1 yr" ;
+		bedrock_elem:interval_write = "1 yr" ;
+		bedrock_elem:cell_methods = "time: point" ;
+		bedrock_elem:coordinates = "time_instant mesh2D_face_y mesh2D_face_x" ;
+	double haf_elem(time, nmesh2D_face) ;
+		haf_elem:long_name = "height above flotation" ;
+		haf_elem:units = "m" ;
+		haf_elem:mesh = "mesh2D" ;
+		haf_elem:location = "face" ;
+		haf_elem:online_operation = "instant" ;
+		haf_elem:interval_operation = "1 yr" ;
+		haf_elem:interval_write = "1 yr" ;
+		haf_elem:cell_methods = "time: point" ;
+		haf_elem:coordinates = "time_instant mesh2D_face_y mesh2D_face_x" ;
+	double bedrock(time, nmesh2D_node) ;
+		bedrock:standard_name = "bedrock_altitude" ;
+		bedrock:units = "m" ;
+		bedrock:mesh = "mesh2D" ;
+		bedrock:location = "node" ;
+		bedrock:online_operation = "instant" ;
+		bedrock:interval_operation = "1 yr" ;
+		bedrock:interval_write = "1 yr" ;
+		bedrock:cell_methods = "time: point" ;
+		bedrock:coordinates = "time_instant mesh2D_node_y mesh2D_node_x" ;
+	double sftgif(time, nmesh2D_face) ;
+		sftgif:standard_name = "land_ice_area_fraction" ;
+		sftgif:units = "1" ;
+		sftgif:mesh = "mesh2D" ;
+		sftgif:location = "face" ;
+		sftgif:online_operation = "instant" ;
+		sftgif:interval_operation = "1 yr" ;
+		sftgif:interval_write = "1 yr" ;
+		sftgif:cell_methods = "time: point" ;
+		sftgif:coordinates = "time_instant mesh2D_face_y mesh2D_face_x" ;
+	double haf(time, nmesh2D_node) ;
+		haf:long_name = "height above flotation" ;
+		haf:units = "m" ;
+		haf:mesh = "mesh2D" ;
+		haf:location = "node" ;
+		haf:online_operation = "instant" ;
+		haf:interval_operation = "1 yr" ;
+		haf:interval_write = "1 yr" ;
+		haf:cell_methods = "time: point" ;
+		haf:coordinates = "time_instant mesh2D_node_y mesh2D_node_x" ;
+	double sftgrf(time, nmesh2D_face) ;
+		sftgrf:standard_name = "grounded_ice_sheet_area_fraction" ;
+		sftgrf:units = "1" ;
+		sftgrf:mesh = "mesh2D" ;
+		sftgrf:location = "face" ;
+		sftgrf:online_operation = "instant" ;
+		sftgrf:interval_operation = "1 yr" ;
+		sftgrf:interval_write = "1 yr" ;
+		sftgrf:cell_methods = "time: point" ;
+		sftgrf:coordinates = "time_instant mesh2D_face_y mesh2D_face_x" ;
+	double sftflf(time, nmesh2D_face) ;
+		sftflf:standard_name = "floating_ice_shelf_area_fraction" ;
+		sftflf:units = "1" ;
+		sftflf:mesh = "mesh2D" ;
+		sftflf:location = "face" ;
+		sftflf:online_operation = "instant" ;
+		sftflf:interval_operation = "1 yr" ;
+		sftflf:interval_write = "1 yr" ;
+		sftflf:cell_methods = "time: point" ;
+		sftflf:coordinates = "time_instant mesh2D_face_y mesh2D_face_x" ;
+	double groundedmask(time, nmesh2D_node) ;
+		groundedmask:units = "1" ;
+		groundedmask:mesh = "mesh2D" ;
+		groundedmask:location = "node" ;
+		groundedmask:online_operation = "instant" ;
+		groundedmask:interval_operation = "1 yr" ;
+		groundedmask:interval_write = "1 yr" ;
+		groundedmask:cell_methods = "time: point" ;
+		groundedmask:coordinates = "time_instant mesh2D_node_y mesh2D_node_x" ;
+	double ssavelocity_x(time, nmesh2D_node) ;
+		ssavelocity_x:units = "m a-1" ;
+		ssavelocity_x:mesh = "mesh2D" ;
+		ssavelocity_x:location = "node" ;
+		ssavelocity_x:online_operation = "instant" ;
+		ssavelocity_x:interval_operation = "1 yr" ;
+		ssavelocity_x:interval_write = "1 yr" ;
+		ssavelocity_x:cell_methods = "time: point" ;
+		ssavelocity_x:coordinates = "time_instant mesh2D_node_y mesh2D_node_x" ;
+	double ssavelocity_y(time, nmesh2D_node) ;
+		ssavelocity_y:units = "m a-1" ;
+		ssavelocity_y:mesh = "mesh2D" ;
+		ssavelocity_y:location = "node" ;
+		ssavelocity_y:online_operation = "instant" ;
+		ssavelocity_y:interval_operation = "1 yr" ;
+		ssavelocity_y:interval_write = "1 yr" ;
+		ssavelocity_y:cell_methods = "time: point" ;
+		ssavelocity_y:coordinates = "time_instant mesh2D_node_y mesh2D_node_x" ;
+	double ssavelocity_x_elem(time, nmesh2D_face) ;
+		ssavelocity_x_elem:units = "m a-1" ;
+		ssavelocity_x_elem:mesh = "mesh2D" ;
+		ssavelocity_x_elem:location = "face" ;
+		ssavelocity_x_elem:online_operation = "instant" ;
+		ssavelocity_x_elem:interval_operation = "1 yr" ;
+		ssavelocity_x_elem:interval_write = "1 yr" ;
+		ssavelocity_x_elem:cell_methods = "time: point" ;
+		ssavelocity_x_elem:coordinates = "time_instant mesh2D_face_y mesh2D_face_x" ;
+	double dhdt_elem(time, nmesh2D_face) ;
+		dhdt_elem:standard_name = "tendency_of_land_ice_thickness" ;
+		dhdt_elem:units = "m a-1" ;
+		dhdt_elem:mesh = "mesh2D" ;
+		dhdt_elem:location = "face" ;
+		dhdt_elem:online_operation = "instant" ;
+		dhdt_elem:interval_operation = "1 yr" ;
+		dhdt_elem:interval_write = "1 yr" ;
+		dhdt_elem:cell_methods = "time: point" ;
+		dhdt_elem:coordinates = "time_instant mesh2D_face_y mesh2D_face_x" ;
+	double ssavelocity_y_elem(time, nmesh2D_face) ;
+		ssavelocity_y_elem:units = "m a-1" ;
+		ssavelocity_y_elem:mesh = "mesh2D" ;
+		ssavelocity_y_elem:location = "face" ;
+		ssavelocity_y_elem:online_operation = "instant" ;
+		ssavelocity_y_elem:interval_operation = "1 yr" ;
+		ssavelocity_y_elem:interval_write = "1 yr" ;
+		ssavelocity_y_elem:cell_methods = "time: point" ;
+		ssavelocity_y_elem:coordinates = "time_instant mesh2D_face_y mesh2D_face_x" ;
+	double strbasemag(time, nmesh2D_face) ;
+		strbasemag:units = "MPa" ;
+		strbasemag:mesh = "mesh2D" ;
+		strbasemag:location = "face" ;
+		strbasemag:online_operation = "instant" ;
+		strbasemag:interval_operation = "1 yr" ;
+		strbasemag:interval_write = "1 yr" ;
+		strbasemag:cell_methods = "time: point" ;
+		strbasemag:coordinates = "time_instant mesh2D_face_y mesh2D_face_x" ;
+	double ligroundf(time, nmesh2D_face) ;
+		ligroundf:units = "m a-1" ;
+		ligroundf:mesh = "mesh2D" ;
+		ligroundf:location = "face" ;
+		ligroundf:online_operation = "instant" ;
+		ligroundf:interval_operation = "1 yr" ;
+		ligroundf:interval_write = "1 yr" ;
+		ligroundf:cell_methods = "time: point" ;
+		ligroundf:coordinates = "time_instant mesh2D_face_y mesh2D_face_x" ;
+	double dhdt(time, nmesh2D_node) ;
+		dhdt:standard_name = "tendency_of_land_ice_thickness" ;
+		dhdt:units = "m a-1" ;
+		dhdt:mesh = "mesh2D" ;
+		dhdt:location = "node" ;
+		dhdt:online_operation = "instant" ;
+		dhdt:interval_operation = "1 yr" ;
+		dhdt:interval_write = "1 yr" ;
+		dhdt:cell_methods = "time: point" ;
+		dhdt:coordinates = "time_instant mesh2D_node_y mesh2D_node_x" ;
+	double ceff(time, nmesh2D_node) ;
+		ceff:units = "MPa m-1 a" ;
+		ceff:mesh = "mesh2D" ;
+		ceff:location = "node" ;
+		ceff:online_operation = "instant" ;
+		ceff:interval_operation = "1 yr" ;
+		ceff:interval_write = "1 yr" ;
+		ceff:cell_methods = "time: point" ;
+		ceff:coordinates = "time_instant mesh2D_node_y mesh2D_node_x" ;
+	double alphaRC(time, nmesh2D_node) ;
+		alphaRC:mesh = "mesh2D" ;
+		alphaRC:location = "node" ;
+		alphaRC:online_operation = "instant" ;
+		alphaRC:interval_operation = "1 yr" ;
+		alphaRC:interval_write = "1 yr" ;
+		alphaRC:cell_methods = "time: point" ;
+		alphaRC:coordinates = "time_instant mesh2D_node_y mesh2D_node_x" ;
+	double betaRC(time, nmesh2D_node) ;
+		betaRC:mesh = "mesh2D" ;
+		betaRC:location = "node" ;
+		betaRC:online_operation = "instant" ;
+		betaRC:interval_operation = "1 yr" ;
+		betaRC:interval_write = "1 yr" ;
+		betaRC:cell_methods = "time: point" ;
+		betaRC:coordinates = "time_instant mesh2D_node_y mesh2D_node_x" ;
+	double mu(time, nmesh2D_node) ;
+		mu:long_name = "SSA mean viscosity" ;
+		mu:mesh = "mesh2D" ;
+		mu:location = "node" ;
+		mu:online_operation = "instant" ;
+		mu:interval_operation = "1 yr" ;
+		mu:interval_write = "1 yr" ;
+		mu:cell_methods = "time: point" ;
+		mu:coordinates = "time_instant mesh2D_node_y mesh2D_node_x" ;
+	double tau_RC(time, nmesh2D_node) ;
+		tau_RC:units = "MPa" ;
+		tau_RC:mesh = "mesh2D" ;
+		tau_RC:location = "node" ;
+		tau_RC:online_operation = "instant" ;
+		tau_RC:interval_operation = "1 yr" ;
+		tau_RC:interval_write = "1 yr" ;
+		tau_RC:cell_methods = "time: point" ;
+		tau_RC:coordinates = "time_instant mesh2D_node_y mesh2D_node_x" ;
+	double effective_pressure(time, nmesh2D_node) ;
+		effective_pressure:units = "MPa" ;
+		effective_pressure:mesh = "mesh2D" ;
+		effective_pressure:location = "node" ;
+		effective_pressure:online_operation = "instant" ;
+		effective_pressure:interval_operation = "1 yr" ;
+		effective_pressure:interval_write = "1 yr" ;
+		effective_pressure:cell_methods = "time: point" ;
+		effective_pressure:coordinates = "time_instant mesh2D_node_y mesh2D_node_x" ;
+	double calving_front_flux(time, nmesh2D_face) ;
+		calving_front_flux:units = "m a-1" ;
+		calving_front_flux:mesh = "mesh2D" ;
+		calving_front_flux:location = "face" ;
+		calving_front_flux:online_operation = "instant" ;
+		calving_front_flux:interval_operation = "1 yr" ;
+		calving_front_flux:interval_write = "1 yr" ;
+		calving_front_flux:cell_methods = "time: point" ;
+		calving_front_flux:coordinates = "time_instant mesh2D_face_y mesh2D_face_x" ;
+
+// global attributes:
+		:name = "ssp370_c003_m005_v2_states" ;
+		:description = "Created by xios" ;
+		:title = "Created by xios" ;
+		:Conventions = "UGRID" ;
+		:timeStamp = "2026-Oct-14 02:29:25 GMT" ;
+		:uuid = "073c0451-2767-47de-8fa4-9844f3cc2725" ;
+		:model_case = "AA_SSA_ISMIP7_SSP370_CESM2_C003_m005_v2" ;
+		:projection = "EPSG:3031" ;
+		:time_calendar = "360_day" ;
+		:time_origin = "days since 2005-01-01" ;
+}
+(issm_env) Felicitys-MacBook-Pro:OneDrive_1_11-14-2026 felicity$ cdo sinfo ssp370_c003_m005_v2_states.nc
+cdi  warning (find_time_vars): Found more than one time variable, skipped variable time_instant!
+cdi  warning (set_coordinates_varids): Coordinates variable time_instant can't be assigned!
+   File format : NetCDF4
+    -1 : Institut Source   T Steptype Levels Num    Points Num Dtype : Parameter ID
+     1 : unknown  unknown  c instant       1   1   2754695   1  F32  : -1
+     2 : unknown  unknown  c instant       1   1   2754695   1  F32  : -2
+     3 : unknown  unknown  c instant       1   1   5509390   2  I32  : -3
+     4 : unknown  unknown  c instant       1   1   5475615   3  I32  : -4
+     5 : unknown  unknown  c instant       1   1   5475615   3  I32  : -5
+     6 : unknown  unknown  c instant       1   1   5509390   2  I32  : -6
+     7 : unknown  unknown  c instant       1   1   5475615   3  I32  : -7
+     8 : unknown  unknown  c instant       1   1   1825205   4  F32  : -8
+     9 : unknown  unknown  c instant       1   1    929491   5  F32  : -9
+    10 : unknown  unknown  v instant       1   1   1825205   4  F64  : -10
+    11 : unknown  unknown  c instant       1   1    929491   5  F32  : -11
+    12 : unknown  unknown  v instant       1   1   1825205   4  F64  : -12
+    13 : unknown  unknown  v instant       1   1    929491   5  F64  : -13
+    14 : unknown  unknown  v instant       1   1   1825205   4  F64  : -14
+    15 : unknown  unknown  v instant       1   1    929491   5  F64  : -15
+    16 : unknown  unknown  v instant       1   1    929491   5  F64  : -16
+    17 : unknown  unknown  v instant       1   1   1825205   4  F64  : -17
+    18 : unknown  unknown  v instant       1   1   1825205   4  F64  : -18
+    19 : unknown  unknown  v instant       1   1    929491   5  F64  : -19
+    20 : unknown  unknown  v instant       1   1   1825205   4  F64  : -20
+    21 : unknown  unknown  v instant       1   1    929491   5  F64  : -21
+    22 : unknown  unknown  v instant       1   1   1825205   4  F64  : -22
+    23 : unknown  unknown  v instant       1   1   1825205   4  F64  : -23
+    24 : unknown  unknown  v instant       1   1    929491   5  F64  : -24
+    25 : unknown  unknown  v instant       1   1    929491   5  F64  : -25
+    26 : unknown  unknown  v instant       1   1    929491   5  F64  : -26
+    27 : unknown  unknown  v instant       1   1   1825205   4  F64  : -27
+    28 : unknown  unknown  v instant       1   1   1825205   4  F64  : -28
+    29 : unknown  unknown  v instant       1   1   1825205   4  F64  : -29
+    30 : unknown  unknown  v instant       1   1   1825205   4  F64  : -30
+    31 : unknown  unknown  v instant       1   1   1825205   4  F64  : -31
+    32 : unknown  unknown  v instant       1   1    929491   5  F64  : -32
+    33 : unknown  unknown  v instant       1   1    929491   5  F64  : -33
+    34 : unknown  unknown  v instant       1   1    929491   5  F64  : -34
+    35 : unknown  unknown  v instant       1   1    929491   5  F64  : -35
+    36 : unknown  unknown  v instant       1   1    929491   5  F64  : -36
+    37 : unknown  unknown  v instant       1   1    929491   5  F64  : -37
+    38 : unknown  unknown  v instant       1   1    929491   5  F64  : -38
+    39 : unknown  unknown  v instant       1   1   1825205   4  F64  : -39
+   Grid coordinates :
+     1 : generic                  : points=2754695
+     2 : generic                  : points=5509390 (2x2754695)
+     3 : generic                  : points=5475615 (3x1825205)
+     4 : unstructured             : points=1825205
+                    mesh2D_face_x : -179.9991 to 180 degrees_east
+                    mesh2D_face_y : -89.90829 to -63.22278 degrees_north
+     5 : unstructured             : points=929491
+                    mesh2D_node_x : -179.9999 to 179.9997 degrees_east
+                    mesh2D_node_y : -89.98558 to -63.21862 degrees_north
+   Vertical coordinates :
+     1 : surface                  : levels=1
+   Time coordinate :
+                             time : 5 steps
+     RefTime =  2005-01-01 00:00:00  Units = days  Calendar = 360_day  Bounds = true
+  YYYY-MM-DD hh:mm:ss  YYYY-MM-DD hh:mm:ss  YYYY-MM-DD hh:mm:ss  YYYY-MM-DD hh:mm:ss
+  2016-01-01 00:00:00  2017-01-01 00:00:00  2018-01-01 00:00:00  2019-01-01 00:00:00
+  2020-01-01 00:00:00
+cdo    sinfo: Processed 39 variables over 5 timesteps [0.04s 122MB]
